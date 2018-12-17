@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!--Sanbox html test to see if yatsy code can integrate here-->
+    <!--Test that the yatsy ui can be implemented and tested within this file-->
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="yatsy/dice/node_modules/three/src/Three.js"></script>
+    <script src="yatsy/dice/node_modules/cannon/src/Cannon.js"></script>
+    <script src="yatsy/dice/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+    <script src="yatsy/dice/node_modules/three/examples/js/libs/stats.min.js"></script>
+    <script src="yatsy/dice/node_modules/threejs-dice/examples/js/keyboard.js"></script>
+	<script src="yatsy/dice/node_modules/threejs-dice/examples/js/jquery.js"></script>
+
+    <script src="yatsy/dice/node_modules/threejs-dice/examples/Yatsy-By-Ollie-Atkins/YatzyDiceManager.js"></script>
+    <script src="yatsy/dice/node_modules/threejs-dice/examples/Yatsy-By-Ollie-Atkins/YatsyRainRolling.js"></script>
+    
+    <script type="text/javascript" src="yatsy/dice/node_modules/threejs-dice/examples/Yatsy-By-Ollie-Atkins/yatzy.js"></script>
+     <script src="yatsy/dice/node_modules/threejs-dice/examples/Yatsy-By-Ollie-Atkins/ViewHandler.js"></script>
+    <link rel="stylesheet" type="text/css" href="yatsy/dice/node_modules/threejs-dice/examples/Yatsy-By-Ollie-Atkins/style.css">
+    
+   
+    <script type="text/javascript">
+        var Yatsy;
+        jQuery(document).ready(function() {
+            init();
+            Yatzy = new YatzyByOllieAtkins();
+            Yatzy.addEventListenerToDices();
+            Yatzy.addClickListenerToTableCells();
+         
+            
+            Yatzy.printMessage('Throw the Dices to start the Game');
+            console.log("yatzy type" + typeof Yatsy) ;
+           
+
+            
+            KeyboardJS.bind.key('r', function(e) {
+                        console.log('reload-pressed');
+                        
+                       
+                       
+                       
+                     
+                    
+                        
+                    });
+            //jQuery("canvas").css()
+         
+             
+    
+           console.log('windowLoadedDomJs');
+        
+          //document.getElementById("dices").addEventListener("click",testIsDiceClick);
+          
+          
+    // document.getElementById("dice0").innerHTML = Yatzy.getDiceImage(1);
+    // document.getElementById("dice1").innerHTML = Yatzy.getDiceImage(2);
+    // document.getElementById("dice2").innerHTML = Yatzy.getDiceImage(3);
+    // document.getElementById("dice3").innerHTML = Yatzy.getDiceImage(4);
+    // document.getElementById("dice4").innerHTML = Yatzy.getDiceImage(5);
+    
+        });
+    
+    </script>
+</head>
+<body>
+<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+
+
+<div class="Titlecontainer">
+        <h2 id="Title">Yatzy</h2>
+        
+      
+       
+</div>
+<div class="container MessageContainer" id="Message">
+        <div> <h1  align="center">Message</h1></div>
+        
+</div>
+
+
+   <div class="scorecardMain">
+       <div><table id="scorecard">
+       <tr class="top">
+          <th>Score Card</th>
+          <th>Scores</th>
+         
+       </tr>
+       <tr id="ones">
+          <td>Ones</td>
+          <td id="cell1"></td>
+        
+       </tr>
+       <tr id="twos">
+          <td>Twos</td>
+          <td id="cell2"></td>
+          
+       </tr>
+       <tr id="threes">
+          <td>Threes</td>
+          <td id="cell3"></td>
+          
+       </tr>
+       <tr id="fours">
+          <td>Fours</td>
+          <td id="cell4"></td>
+          
+       </tr>
+       <tr id="fives">
+          <td>Fives</td>
+          <td id="cell5"></td>
+          
+       </tr>
+       <tr id="sixes" class="">
+          <td>Sixes</td>
+          <td id="cell6"></td>
+          
+       </tr>
+
+       <tr id="bonus" class="">
+          <td>Bonus</td>
+          <td id="cellBonus"></td>
+         
+       </tr>
+       <tr id="onepair">
+          <td>One Pair</td>
+          <td id="cellOnePair"></td>
+          
+       </tr>
+       <tr id="twopairs">
+          <td>Two Pairs</td>
+          <td id="cellTwoPair"></td>
+          
+       </tr>
+       <tr id="three-of-a-kind">
+          <td>Three of a kind</td>
+          <td id="cellThreeOfAKind"></td>
+        
+       </tr>
+       <tr id="four-of-a-kind">
+          <td>Four of a kind</td>
+          <td id="cellFourOfAKind"></td>
+          
+       </tr>
+       <tr id="full-house">
+          <td>Full House</td>
+          <td id="cellFullHouse"></td>
+          
+       </tr>
+       <tr id="small-straight">
+          <td>Small straight</td>
+          <td id="cellSmallStraight"></td>
+          
+       </tr>
+       <tr id="large-straight">
+          <td>Large straight</td>
+          <td id="cellLargeStraight"></td>
+        
+       </tr>
+       <tr id="chance">
+          <td>Chance</td>
+          <td id="cellChance"></td>
+         
+       </tr>
+       <tr id="yatzy" >
+          <td>Yatzy</td>
+          <td id="cellYatsy"></td>
+         
+       </tr>
+      
+   <tr id="" class="lastline">
+    <td><b>Total Score</b></td>
+    <td id="cellTotalScore"></td>
+   
+ </tr> 
+       </table></div>
+     <table id="dices">
+
+        <tr class="flex-dices">
+          <td id="dice0" class="dice" ><img src="Yatsy-By-Ollie-Atkins/images/dice_4.png" alt="diceNumber4"></td>
+          <td id="dice1" class="dice" ><img src="Yatsy-By-Ollie-Atkins/images/dice_6.png" alt="diceNumber6"></td>
+          <td id="dice2" class="dice" ><img src="Yatsy-By-Ollie-Atkins/images/dice_6.png" alt="diceNumber6"></td>
+          <td id="dice3" class="dice" ><img src="Yatsy-By-Ollie-Atkins/images/dice_2.png" alt="diceNumber2"></td>
+          <td id="dice4" class="dice" ><img src="Yatsy-By-Ollie-Atkins/images/dice_1.png" alt="diceNumber1"></td>
+           
+          
+        </tr>
+
+      
+      </table></div>
+       <div></div>
+<button class="button" onclick="Yatzy.throwDices();">Throw Dices</button>
+
+
+</div>
+    
+
+
+
+
+
+
+</div>
+</body>
+</html>
