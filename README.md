@@ -1,3 +1,3 @@
-# 3djs
+# Yatzy Game Create with Three.js library and Canon Js
 
-This is a backup of 3d projects , templates and general learning about threejs and physijs by reverse engineering and changing the code to understand what it does.++
+I Made this game for a frontend developer course. I used external libraries to calculate the actual vector projections and rotations. The actual Game logic is entirely coded by me. 
