@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!--Sanbox html test to see if yatsy code can integrate here-->
+    <!--Test that the yatsy ui can be implemented and tested within this file-->
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-96x96.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta charset="UTF-8">
+    <script src="scripts/libs/three.min.js"></script>
+    <script src="scripts/libs/cannon.min.js"></script>
+    <script src="scripts/libs/OrbitControls.js"></script>
+    <script src="scripts/libs/stats.min.js"></script>
+    <script src="scripts/libs/keyboard.js"></script>
+	<script src="scripts/libs/jquery.js"></script>
+
+    <script src="scripts/libs/YatzyDiceManager.js"></script>
+    <script src="scripts/yatzy/YatsyRainRolling.js"></script>
+    
+    <script type="text/javascript" src="scripts/yatzy/yatzy.js"></script>
+     <script src="scripts/yatzy/ViewHandler.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script type="text/javascript">
+        var Yatsy;
+        jQuery(document).ready(function() {
+            init();
+            Yatzy = new YatzyByOllieAtkins();
+            Yatzy.addEventListenerToDices();
+            Yatzy.addClickListenerToTableCells();
+         
+            
+            Yatzy.printMessage('Throw the Dices to start the Game');
+            console.log("yatzy type" + typeof Yatsy) ;
+           
+
+            
+            KeyboardJS.bind.key('r', function(e) {
+                        console.log('reload-pressed');
+                    });
+            //jQuery("canvas").css()
+ 
+           console.log('windowLoadedDomJs');
+        
+          //document.getElementById("dices").addEventListener("click",testIsDiceClick);
+ 
+    // document.getElementById("dice0").innerHTML = Yatzy.getDiceImage(1);
+    // document.getElementById("dice1").innerHTML = Yatzy.getDiceImage(2);
+    // document.getElementById("dice2").innerHTML = Yatzy.getDiceImage(3);
+    // document.getElementById("dice3").innerHTML = Yatzy.getDiceImage(4);
+    // document.getElementById("dice4").innerHTML = Yatzy.getDiceImage(5);
+    
+        });
+    </script>
+</head>
+<body>
+<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+
+
+<div class="Titlecontainer">
+        <h2 id="Title">Yatzy</h2>
+        
+      
+       
+</div>
+<div class="container MessageContainer" id="Message">
+        <div> <h1  align="center">Message</h1></div>
+        
+</div>
+
+
+   <div class="scorecardMain">
+       <div><table id="scorecard">
+       <tr class="top">
+          <th>Score Card</th>
+          <th>Scores</th>
+         
+       </tr>
+       <tr id="ones">
+          <td>Ones</td>
+          <td id="cell1"></td>
+        
+       </tr>
+       <tr id="twos">
+          <td>Twos</td>
+          <td id="cell2"></td>
+          
+       </tr>
+       <tr id="threes">
+          <td>Threes</td>
+          <td id="cell3"></td>
+          
+       </tr>
+       <tr id="fours">
+          <td>Fours</td>
+          <td id="cell4"></td>
+          
+       </tr>
+       <tr id="fives">
+          <td>Fives</td>
+          <td id="cell5"></td>
+          
+       </tr>
+       <tr id="sixes" class="">
+          <td>Sixes</td>
+          <td id="cell6"></td>
+          
+       </tr>
+
+       <tr id="bonus" class="">
+          <td>Bonus</td>
+          <td id="cellBonus"></td>
+         
+       </tr>
+       <tr id="onepair">
+          <td>One Pair</td>
+          <td id="cellOnePair"></td>
+          
+       </tr>
+       <tr id="twopairs">
+          <td>Two Pairs</td>
+          <td id="cellTwoPair"></td>
+          
+       </tr>
+       <tr id="three-of-a-kind">
+          <td>Three of a kind</td>
+          <td id="cellThreeOfAKind"></td>
+        
+       </tr>
+       <tr id="four-of-a-kind">
+          <td>Four of a kind</td>
+          <td id="cellFourOfAKind"></td>
+          
+       </tr>
+       <tr id="full-house">
+          <td>Full House</td>
+          <td id="cellFullHouse"></td>
+          
+       </tr>
+       <tr id="small-straight">
+          <td>Small straight</td>
+          <td id="cellSmallStraight"></td>
+          
+       </tr>
+       <tr id="large-straight">
+          <td>Large straight</td>
+          <td id="cellLargeStraight"></td>
+        
+       </tr>
+       <tr id="chance">
+          <td>Chance</td>
+          <td id="cellChance"></td>
+         
+       </tr>
+       <tr id="yatzy" >
+          <td>Yatzy</td>
+          <td id="cellYatsy"></td>
+         
+       </tr>
+       
+   <tr id="" class="lastline">
+    <td><b>Total Score</b></td>
+    <td id="cellTotalScore"></td>
+   
+ </tr> 
+       </table></div>
+     <table id="dices">
+
+        <tr class="flex-dices">
+          <td id="dice0" class="dice" ></td>
+          <td id="dice1" class="dice" ></td>
+          <td id="dice2" class="dice" ></td>
+          <td id="dice3" class="dice" ></td>
+          <td id="dice4" class="dice" ></td>
+           
+        </tr>
+
+      </table></div>
+<div></div>
+<button class="button" onclick="Yatzy.throwDices();">Throw Dices</button>
+
+</div>
+    
+</div>
+</body>
+</html>
