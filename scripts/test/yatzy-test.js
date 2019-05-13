@@ -44,7 +44,6 @@ var availableMoves = {
     validScoreEntryRange : [5,30],
     error: [0]
 };
-//test git vscode
 
 // Object stores which moves have not been used yet
 var MovesLeft = {
