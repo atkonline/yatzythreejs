@@ -1,8 +1,17 @@
 "use strict";
 
+/*
+change notes 
+-removed audio 
+
+
+*/
+
+
+
 
 function YatzyByOllieAtkins() {
-var audio = new Audio('roll_dice.mp3');
+//var audio = new Audio('roll_dice.mp3');
 
 /** Type checking String */
 var TypeCheckingStrings = {
@@ -175,9 +184,8 @@ var MovesLeft = {
     Yatzy: true
 };
 //public functions
-this.printMessage = function printMessage(text){
-    var msg = document.getElementById('Message');
-    msg.innerHTML = text;
+printMessage = function printMessage(text){
+    console.log(text);
      
     }
 
@@ -186,43 +194,7 @@ this.printMessage = function printMessage(text){
         msg.innerHTML = text;
          
         }
-this.addClickListenerToTableRows = function addClickListenerToTableRows(){
-    var tbl = document.getElementById("scorecard");
 
-    if (tbl !== null) {
-        for (var i = 0; i < tbl.rows.length; i++) {
-          
-            for (var j = 0; j < tbl.rows[i].cells.length; j++){
-
-                //get id of clicked cell e.g yatsy
-                
-                tbl.rows[i].cells[j].onclick = function () { scoreCard_ClickHandler(this); };
-                event.stopPropagation();
-                
-               
-            }
-        }
-
-    } 
-
-}
-
-this.getDiceImage = function getDiceImage(diceNumber) {
-
-    if (diceNumber == 1) {
-        return '<img src="images/dice_1.png" alt="diceNumber1" >';
-    } else if (diceNumber == 2) {
-        return '<img src="images/dice_2.png" alt="diceNumber2" >';
-    } else if (diceNumber == 3) {
-        return '<img src="images/dice_3.png" alt="diceNumber3" >';
-    } else if (diceNumber == 4) {
-        return '<img src="images/dice_4.png" alt="diceNumber4" >';
-    } else if (diceNumber == 5) {
-        return '<img src="images/dice_5.png" alt="diceNumber5" >';
-    } else if (diceNumber == 6) {
-        return '<img src="images/dice_6.png" alt="diceNumber6" >';
-    }
-}
 
 var gamestate = {
     gamestatelist: ['notstarted','started','endofgame'],
@@ -324,20 +296,7 @@ var YatsyGameHandler = new GameHandler(15);
 console.log(YatsyGameHandler);
 //new click handler for table rows to fix issue
 
-this.addClickListenerToTableCells = function addClickListenerToTableCells(){
-    
-    var tbl = document.getElementById("scorecard");
 
-    if (tbl !== null) {
-        for (var i = 0; i < tbl.rows.length; i++) {
-                //get id of clicked cell e.g yatsy
-
-                tbl.rows[i].onclick = function () { scoreCard_ClickHandler(this); };
-                event.stopPropagation();
-        }
-
-    } 
-}
 /*-------------------Meat of the matter--------------------*/
 
 
@@ -363,18 +322,11 @@ function getScore(){
 function printScore(scoreCard){
     let score = getScore();
     console.log(score);    
-document.getElementById("cellTotalScore").innerHTML = score; 
-
-
+    return score;
 }
 
 /*ui-------------------------*/
-function penaltyInvalidMove(){
 
-}
-function penaltyInvalidMoveUiEvent(){   
-
-}
 function Setlockdice(dicenumber) {
     if (lockdice[dicenumber]) {
         lockdice[dicenumber] = false;
@@ -409,7 +361,6 @@ function disableBtn() {
 }
 
 /*-------------------------ui*/
-
 function getAvailableMoves() {
    
    
@@ -1134,7 +1085,7 @@ console.log("turnphase after " + turnPhase);
 printScore();
 }
 
-this.throwDices =  function throwDices() {
+var throwDices =  function throwDices() {
     if(turnPhase ===3 || 0) { unlockDices();   }
     console.log("turnphase: " + turnPhase);
     ClearPencilledMoves();
@@ -1235,3 +1186,5 @@ this.addEventListenerToDices = function addEventListenerToDices() {
     }
 }
 }
+
+module.exports.YatzyByOllieAtkins = YatzyByOllieAtkins();
