@@ -1,15 +1,7 @@
 "use strict";
 
-/*
-change notes 
--removed audio 
 
-
-*/
-
-
-
-
+module.exports.YatzyByOllieAtkins = 
 function YatzyByOllieAtkins() {
 //var audio = new Audio('roll_dice.mp3');
 
@@ -18,19 +10,19 @@ var TypeCheckingStrings = {
     number: "number"
 }
 
-var lockdice = [false, false, false, false, false];
-var endTurn = false;
+this.lockdice = [false, false, false, false, false];
+this.endTurn = false;
 /** STATE **/
-var turns = 15;
-var dices = [0, 0 ,0, 0, 0];
-var _selected_row;
-var turnPhase = 0;
+this.turns = 15;
+this.dices = [0, 0 ,0, 0, 0];
+this._selected_row;
+this.turnPhase = 0;
 
 /** Game State Validation Functions */
 
 var testmode = true;
           
-function validateTurnPhase(){
+this.validateTurnPhase = function(){
         let turnphaseType = typeof turnPhase;
         //turnPhase ="1"; test type checking
         if(turnphaseType === TypeCheckingStrings.number && (turnPhase=== 0 || turnPhase=== 1 || turnPhase===2 || turnPhase===3 ) ){
@@ -144,7 +136,7 @@ var score =
     Yatzy: -1
     };
 // object that stores valid moves that have been calculated 
-var availableMoves = {
+this.availableMoves = {
     Ones: -1,
     Twos: -1,
     Threes: -1,
@@ -165,7 +157,7 @@ var availableMoves = {
     error: [0]
 };
 // Object stores which moves have not been used yet
-var MovesLeft = {
+this.MovesLeft = {
     Ones: true,
     Twos: true,
     Threes: true,
@@ -184,8 +176,9 @@ var MovesLeft = {
     Yatzy: true
 };
 //public functions
-printMessage = function printMessage(text){
-    console.log(text);
+this.printMessage = function printMessage(text){
+    var msg = document.getElementById('Message');
+    msg.innerHTML = text;
      
     }
 
@@ -194,7 +187,43 @@ printMessage = function printMessage(text){
         msg.innerHTML = text;
          
         }
+this.addClickListenerToTableRows = function addClickListenerToTableRows(){
+    var tbl = document.getElementById("scorecard");
 
+    if (tbl !== null) {
+        for (var i = 0; i < tbl.rows.length; i++) {
+          
+            for (var j = 0; j < tbl.rows[i].cells.length; j++){
+
+                //get id of clicked cell e.g yatsy
+                
+                tbl.rows[i].cells[j].onclick = function () { scoreCard_ClickHandler(this); };
+                event.stopPropagation();
+                
+               
+            }
+        }
+
+    } 
+
+}
+
+this.getDiceImage = function getDiceImage(diceNumber) {
+
+    if (diceNumber == 1) {
+        return '<img src="images/dice_1.png" alt="diceNumber1" >';
+    } else if (diceNumber == 2) {
+        return '<img src="images/dice_2.png" alt="diceNumber2" >';
+    } else if (diceNumber == 3) {
+        return '<img src="images/dice_3.png" alt="diceNumber3" >';
+    } else if (diceNumber == 4) {
+        return '<img src="images/dice_4.png" alt="diceNumber4" >';
+    } else if (diceNumber == 5) {
+        return '<img src="images/dice_5.png" alt="diceNumber5" >';
+    } else if (diceNumber == 6) {
+        return '<img src="images/dice_6.png" alt="diceNumber6" >';
+    }
+}
 
 var gamestate = {
     gamestatelist: ['notstarted','started','endofgame'],
@@ -208,7 +237,7 @@ var gamestate = {
     }
 }
 
-function GameHandler(maxTurns){
+this.GameHandler = function(maxTurns){
     var gamestateList = [null,'started','endofgame','turn'];
     var turn; 
     var availableMoves = {
@@ -292,11 +321,33 @@ function GameHandler(maxTurns){
     
     }
 }
-var YatsyGameHandler = new GameHandler(15);
-console.log(YatsyGameHandler);
+/**
+ *  @param GameHandler
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+this.YatsyGameHandler = new this.GameHandler(15);
+
 //new click handler for table rows to fix issue
 
+this.addClickListenerToTableCells = function addClickListenerToTableCells(){
+    
+    var tbl = document.getElementById("scorecard");
 
+    if (tbl !== null) {
+        for (var i = 0; i < tbl.rows.length; i++) {
+                //get id of clicked cell e.g yatsy
+
+                tbl.rows[i].onclick = function () { scoreCard_ClickHandler(this); };
+                event.stopPropagation();
+        }
+
+    } 
+}
 /*-------------------Meat of the matter--------------------*/
 
 
@@ -306,7 +357,7 @@ function gameEnded(){
     var score = getScore(); 
     printMessage('Game ended.  Score: ' + score.toString());
 }
-function getScore(){
+this.getScore = function(){
     var _scores = Object.values(score)
     var totalScore = 0; 
 
@@ -322,11 +373,18 @@ function getScore(){
 function printScore(scoreCard){
     let score = getScore();
     console.log(score);    
-    return score;
+document.getElementById("cellTotalScore").innerHTML = score; 
+
+
 }
 
 /*ui-------------------------*/
+function penaltyInvalidMove(){
 
+}
+function penaltyInvalidMoveUiEvent(){   
+
+}
 function Setlockdice(dicenumber) {
     if (lockdice[dicenumber]) {
         lockdice[dicenumber] = false;
@@ -361,7 +419,8 @@ function disableBtn() {
 }
 
 /*-------------------------ui*/
-function getAvailableMoves() {
+
+this.getAvailableMoves = function () {
    
    
     //Upper section combinations
@@ -508,7 +567,7 @@ function getAvailableMoves() {
         availableMoves.Yatzy = 36;
     }
 }
-function scoreCard_ClickHandler(row) {
+this.scoreCard_ClickHandler = function (row) {
     
     // if(endTurn) {
     //     unlockDices();
@@ -1085,7 +1144,7 @@ console.log("turnphase after " + turnPhase);
 printScore();
 }
 
-var throwDices =  function throwDices() {
+this.throwDices =  function throwDices() {
     if(turnPhase ===3 || 0) { unlockDices();   }
     console.log("turnphase: " + turnPhase);
     ClearPencilledMoves();
@@ -1186,5 +1245,3 @@ this.addEventListenerToDices = function addEventListenerToDices() {
     }
 }
 }
-
-module.exports.YatzyByOllieAtkins = YatzyByOllieAtkins();

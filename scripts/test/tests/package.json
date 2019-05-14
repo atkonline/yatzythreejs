@@ -1,0 +1,19 @@
+{
+  "name": "yatzytest",
+  "version": "1.0.0",
+  "description": "test for yatzy javascript",
+  "main": "main.js",
+  "scripts": {
+    "test": "run-test"
+  },
+  "keywords": [
+    "test",
+    "yatzy"
+  ],
+  "author": "oliver atkins",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
