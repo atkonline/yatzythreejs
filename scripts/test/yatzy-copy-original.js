@@ -551,7 +551,7 @@ this.getAvailableMoves = function () {
         }
     }
 
-
+    
     //Threeofakind
     if (availableMoves.Ones == 5) {
         availableMoves.Yatzy = 5;
@@ -647,8 +647,6 @@ this.scoreCard_ClickHandler = function (row) {
                     }
                     throw 'score card ones click handler error';
             }
-            
-     
     }
      /* -------------------------New code logic Click handler repeat for other scores--------------------------------------*/
    

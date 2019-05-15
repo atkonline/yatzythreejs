@@ -2,9 +2,12 @@
   "name": "yatzytest",
   "version": "1.0.0",
   "description": "test for yatzy javascript",
-  "main": "main.js",
+  "main": "test.js",
+  "directories": {
+    "test": "yatzy-test-suite"
+  },
   "scripts": {
-    "test": "run-test"
+    "test": "mocha"
   },
   "keywords": [
     "test",
