@@ -2,6 +2,7 @@
 var expect = require('chai').expect;
 var fullhouse = require('./yatzy-test-suite/fullhouse.js');
 var yatzy = require('./yatzy-test-suite/yatzy.js');
+var smallStraight = require('./yatzy-test-suite/smallStraight.js');
 
 
 
@@ -30,6 +31,21 @@ describe('yatzy(dicesArray)', function () {
    
     // 2. ACT
     let result = yatzy(dices);
+
+    // 3. ASSERT
+    expect(result).to.be.equal(true);
+
+  });
+});
+
+describe('smallStraight(dicesArray)', function () {
+  it('should return true if 4 dices are in an ascending row', function () {
+    
+    // 1. ARRANGE
+    var dices = [1,3,2,0,1];
+   
+    // 2. ACT
+    let result = smallStraight(dices);
 
     // 3. ASSERT
     expect(result).to.be.equal(true);
