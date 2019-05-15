@@ -20,7 +20,7 @@ function fullhouse(dicesArray){
             DicesCountArray[4] += 1; 
         }
     }
-    let num = dicesArray[i];    let maxdicecount = 5;
+    let maxdicecount = 5;
     let validateDiceCount = 0;
     for(i = 0; i < DicesCountArray.length; i++){
         validateDiceCount += DicesCountArray[i];

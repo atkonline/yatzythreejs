@@ -5,7 +5,7 @@ function YatzyByOllieAtkins() {
 var audio = new Audio('roll_dice.mp3');
 
 /** Type checking String */
-var TypeCheckingStrings = {
+var TypeCheck = {
     number: "number"
 }
 
@@ -14,7 +14,7 @@ var endTurn = false;
 /** STATE **/
 var turns = 15;
 var dices = [0, 0 ,0, 0, 0];
-var _selected_row;
+var _selected_row;  
 var turnPhase = 0;
 
 /** Game State Validation Functions */
@@ -24,10 +24,10 @@ var testmode = true;
 function validateTurnPhase(){
         let turnphaseType = typeof turnPhase;
         //turnPhase ="1"; test type checking
-        if(turnphaseType === TypeCheckingStrings.number && (turnPhase=== 0 || turnPhase=== 1 || turnPhase===2 || turnPhase===3 ) ){
+        if(turnphaseType === TypeCheck.number && (turnPhase=== 0 || turnPhase=== 1 || turnPhase===2 || turnPhase===3 ) ){
             return;
         }
-        else if (turnphaseType !== TypeCheckingStrings.number){
+        else if (turnphaseType !== TypeCheck.number){
             throw "Turnphase Data type invalid: " + (typeof turnphaseType) + "  (only Number type valid)";
          
         }
@@ -36,7 +36,6 @@ function validateTurnPhase(){
             console.log("Error Turnphase invalid!:  " + turnPhase + "  V(alid turnPhases 0,1,2)");
             throw "Invalid turn Phase Error";
         }
-
 }
 function ValidateDices(){
         //check dices values are between 5 Minumum roll and 30 maximum roll
@@ -363,9 +362,7 @@ function getScore(){
 function printScore(scoreCard){
     let score = getScore();
     console.log(score);    
-document.getElementById("cellTotalScore").innerHTML = score; 
-
-
+    document.getElementById("cellTotalScore").innerHTML = score; 
 }
 
 /*ui-------------------------*/
