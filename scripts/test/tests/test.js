@@ -62,7 +62,6 @@ describe('smallStraight(dicesArray)', function () {
    
     // 2. ACT
     let result = smallStraight(dices);
-    console.log(result);
 
     // 3. ASSERT
     expect(result).to.be.equal(false);
