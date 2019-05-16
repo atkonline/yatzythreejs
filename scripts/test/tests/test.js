@@ -3,6 +3,7 @@ var expect = require('chai').expect;
 var fullhouse = require('./yatzy-test-suite/fullhouse.js');
 var yatzy = require('./yatzy-test-suite/yatzy.js');
 var smallStraight = require('./yatzy-test-suite/smallStraight.js');
+var straight = require('./yatzy-test-suite/straight.js');
 
 
 
@@ -49,6 +50,50 @@ describe('smallStraight(dicesArray)', function () {
 
     // 3. ASSERT
     expect(result).to.be.equal(true);
+
+  });
+});
+
+describe('smallStraight(dicesArray)', function () {
+  it('should return false if there is no sequence of 4 numbers in a row', function () {
+    
+    // 1. ARRANGE
+    var dices = [1,0,2,2,2];
+   
+    // 2. ACT
+    let result = smallStraight(dices);
+    console.log(result);
+
+    // 3. ASSERT
+    expect(result).to.be.equal(false);
+
+  });
+});
+
+describe('straight(dicesArray)', function () {
+  it('should return true if 5 numbers in ascending order', function () {
+    
+    // 1. ARRANGE
+    var dices = [0,1,2,3,4];
+   
+    // 2. ACT
+    let result = straight(dices);
+    // 3. ASSERT
+    expect(result).to.be.equal(true);
+
+  });
+});
+
+describe('testStraightreturnsFalse(dicesArray)', function () {
+  it('should return false if there are not 5 numbers in ascending order', function () {
+    
+    // 1. ARRANGE
+    var dices = [0,1,2,3,2];
+   
+    // 2. ACT
+    let result = straight(dices);
+    // 3. ASSERT
+    expect(result).to.be.equal(false);
 
   });
 });
