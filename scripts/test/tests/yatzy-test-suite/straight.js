@@ -10,11 +10,17 @@ function straight(dicesArray){
     for(i = 1; i < 5; i++){
         if(dicesArray[i] - prevNum == 1){
             prevNum = dicesArray[i];
-            if (i == 4)
-            return true;
+            if (i == 4){
+                return true;
+            }
+        }
+        else{
+            //makes sure to exit the loop ;)
+            break;
         }
     }
  
     return false;
 }
+
 module.exports = straight;

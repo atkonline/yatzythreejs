@@ -84,7 +84,7 @@ describe('straight(dicesArray)', function () {
   });
 });
 
-describe('testStraightreturnsFalse(dicesArray)', function () {
+describe('Straight_Return_False_Test(dicesArray)', function () {
   it('should return false if there are not 5 numbers in ascending order', function () {
     
     // 1. ARRANGE
